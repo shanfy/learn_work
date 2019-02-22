@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="db.properties"></properties>
+ <!-- 和spring整合后 environments配置将废除 -->
+	<environments default="development">
+		<environment id="development">
+		 	<!-- mybatis支持的事务:
+             JDBC:数据源自己的事务管理
+             MANAGE(托管),不支持tomcat,一般用在大型的商业服务器,weblogic,jboss -->
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/yang/entity/usermapper.xml"/>
+	</mappers>
+</configuration>
